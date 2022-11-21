@@ -7,18 +7,19 @@ export default function SinglePost() {
   const navigate = useNavigate()
   const { id } = useParams()
   const [form, setForm] = useState({})
+
   useEffect(() => {
     fetch(`http://localhost:4040/single/${id}`)
       .then(res => res.json())
       .then((res) => {
-        setForm({...form, author: res.author, blog: res.blog, date: res.date})
+        setForm({ ...form, author: res.author, blog: res.blog, date: res.date })
       })
       .catch(console.error)
   }, [id, form])
 
   const handleForm = (e) => {
     e.preventDefault()
-    setForm({...form, [e.target.name]: e.target.value})
+    setForm({ ...form, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
@@ -30,8 +31,21 @@ export default function SinglePost() {
       },
       body: JSON.stringify(form)
     })
-      .then(res => res.json())
       .then(() => {
+        navigate('/')
+      })
+      .catch(console.error)
+  }
+
+  const deletePost = () => {
+    fetch(`http://localhost:4040/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    })
+      .then((res) => {
+        console.log(res)
         navigate('/')
       })
       .catch(console.error)
@@ -49,6 +63,7 @@ export default function SinglePost() {
         <label htmlFor='blog'>Post</label>
         <textarea name="blog" id="" cols="30" rows="10" value={form.blog} onChange={handleForm}></textarea>
         <input className='submit-btn' type="submit" value="Update Post" />
+        <button className='delete-btn' onClick={deletePost}>❌</button>
       </form>
       <Footer />
     </>

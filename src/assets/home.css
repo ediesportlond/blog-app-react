@@ -17,6 +17,10 @@ main{
   text-align: left;
 }
 
+.single-card:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 15px 15px;
+}
+
 .single-card > img{
   border-radius: 20px 20px 0 0;
   width: 100%;
