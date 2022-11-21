@@ -14,7 +14,7 @@ export default function SinglePost() {
         setForm({...form, author: res.author, blog: res.blog, date: res.date})
       })
       .catch(console.error)
-  }, [id])
+  }, [id, form])
 
   const handleForm = (e) => {
     e.preventDefault()
