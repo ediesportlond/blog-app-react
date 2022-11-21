@@ -1,7 +1,9 @@
-export default function Footer(){
+export default function Footer() {
   return (
-    <>
-      <h2>Footer.jsx</h2>
-    </>
+
+    <footer>
+      <small>&copy;Eddie Development 2022</small>
+    </footer>
+
   )
 }

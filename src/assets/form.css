@@ -1,0 +1,14 @@
+form{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+label{
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.submit-btn{
+  margin-top: 1rem;
+}

@@ -1,0 +1,17 @@
+.top-nav{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  border-bottom: 2px solid black;
+  background-color: #282c34;
+}
+
+.top-nav>ul{
+  display: flex;
+  justify-content: left;
+  margin: 0;
+}
+
+.top-nav>ul>li{
+  margin: 1rem;
+}

@@ -38,15 +38,15 @@ export default function SinglePost() {
   return (
     <>
       <Header />
-      <h1>UpdatePost.jsx</h1>
+      <h1>Update post</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='author'>Author</label><br />
-        <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} /><br />
-        <label htmlFor='date'>Date</label><br />
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} /><br />
-        <label htmlFor='blog'>Post</label><br />
-        <textarea name="blog" id="" cols="30" rows="10" value={blog} onChange={(e) => setBlog(e.target.value)}></textarea><br />
-        <input type="submit" value="Update Post" />
+        <label htmlFor='author'>Author</label>
+        <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
+        <label htmlFor='date'>Date</label>
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <label htmlFor='blog'>Post</label>
+        <textarea name="blog" id="" cols="30" rows="10" value={blog} onChange={(e) => setBlog(e.target.value)}></textarea>
+        <input className='submit-btn' type="submit" value="Update Post" />
       </form>
       <Footer />
     </>

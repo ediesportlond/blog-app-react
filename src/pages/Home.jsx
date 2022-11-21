@@ -14,12 +14,13 @@ export default function Home(){
   return (
     <>
       <Header />
-      <h1>Home.jsx</h1>
+      <main>
       {
         posts?.map(post => (
           <Card post={post} />
         ))
       }
+      </main>
       <Footer />
     </>
   )
