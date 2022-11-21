@@ -6,19 +6,21 @@ import Footer from '../components/Footer'
 export default function SinglePost() {
   const navigate = useNavigate()
   const { id } = useParams()
-  const [author, setAuthor] = useState('')
-  const [date, setDate] = useState('')
-  const [blog, setBlog] = useState('')
+  const [form, setForm] = useState({})
   useEffect(() => {
     fetch(`http://localhost:4040/single/${id}`)
       .then(res => res.json())
       .then((res) => {
-        setAuthor(res.author)
-        setDate(res.date)
-        setBlog(res.blog)
+        setForm({...form, author: res.author, blog: res.blog, date: res.date})
       })
       .catch(console.error)
   }, [id])
+
+  const handleForm = (e) => {
+    e.preventDefault()
+    setForm({...form, [e.target.name]: e.target.value})
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch(`http://localhost:4040/put/${id}`, {
@@ -26,7 +28,7 @@ export default function SinglePost() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ author, date, blog })
+      body: JSON.stringify(form)
     })
       .then(res => res.json())
       .then(() => {
@@ -41,11 +43,11 @@ export default function SinglePost() {
       <h1>Update post</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor='author'>Author</label>
-        <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
+        <input type="text" name='author' value={form.author} onChange={handleForm} />
         <label htmlFor='date'>Date</label>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <input type="date" name='date' value={form.date} onChange={handleForm} />
         <label htmlFor='blog'>Post</label>
-        <textarea name="blog" id="" cols="30" rows="10" value={blog} onChange={(e) => setBlog(e.target.value)}></textarea>
+        <textarea name="blog" id="" cols="30" rows="10" value={form.blog} onChange={handleForm}></textarea>
         <input className='submit-btn' type="submit" value="Update Post" />
       </form>
       <Footer />
