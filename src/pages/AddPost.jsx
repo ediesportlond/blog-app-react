@@ -15,7 +15,7 @@ export default function AddPost() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch('http://localhost:4040/post',{
+    fetch(process.env.REACT_APP_ENDPOINT+'/post',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

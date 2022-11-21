@@ -9,7 +9,7 @@ export default function SinglePost() {
   const [form, setForm] = useState({})
 
   useEffect(() => {
-    fetch(`http://localhost:4040/single/${id}`)
+    fetch(`${process.env.REACT_APP_ENDPOINT}/single/${id}`)
       .then(res => res.json())
       .then((res) => {
         setForm({ ...form, author: res.author, blog: res.blog, date: res.date })
@@ -24,7 +24,7 @@ export default function SinglePost() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:4040/put/${id}`, {
+    fetch(`${process.env.REACT_APP_ENDPOINT}/put/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ export default function SinglePost() {
   }
 
   const deletePost = () => {
-    fetch(`http://localhost:4040/delete/${id}`, {
+    fetch(`${process.env.REACT_APP_ENDPOINT}/delete/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type' : 'application/json'
