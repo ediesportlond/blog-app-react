@@ -5,9 +5,12 @@ export default function Card({ post }) {
     <>
       <Link to={`/single/${post._id}`} style={{ color: "white", textDecoration: "none" }}>
         <div className="single-card">
-          <h2>{post.author}</h2>
-          <small>{post.date}</small>
-          <p>{post.blog}</p>
+          <img src={`https://source.unsplash.com/random?sig=${post._id}`} alt="" />
+          <div className="card-content">
+            <h3>{post.author}</h3>
+            <small>{post.date}</small>
+            <p>{post.blog}</p>
+          </div>
         </div>
       </Link>
     </>

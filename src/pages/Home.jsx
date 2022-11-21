@@ -17,7 +17,7 @@ export default function Home(){
       <main>
       {
         posts?.map(post => (
-          <Card post={post} />
+          <Card key={post._id}post={post} />
         ))
       }
       </main>
